@@ -1,0 +1,134 @@
+﻿<Window x:Class="wpfsnake.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfsnake"
+        mc:Ignorable="d"
+        Height="656" Width="1275" ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+        HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+        MinWidth="1275" MinHeight="656" HorizontalAlignment="Center" VerticalAlignment="Center" MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Background="Black" Icon="dino_dinosaur_icon_153295.ico" >
+    <DockPanel Background="Black">
+        <Grid DockPanel.Dock="Top" Name="pnlTitleBar">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontFamily" Value="Consolas" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="24" />
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </Grid.Resources>
+
+            <WrapPanel Margin="10,0,0,0">
+                <TextBlock>Snake</TextBlock>
+            </WrapPanel>
+            <Button Grid.Column="2" DockPanel.Dock="Right" Background="Transparent" Foreground="White" FontWeight="Bold" FontSize="20" BorderThickness="0" Name="btnClose" Click="BtnClose_Click" Padding="10,0">X</Button>
+        </Grid>
+        <Grid Width="960" Height="540" Margin="153.5,42.5">
+            <Border BorderBrush="Silver" BorderThickness="2" Width="300" Height="300" Name="bdrEttentionMessage" Panel.ZIndex="1" Visibility="Collapsed">
+                <StackPanel Orientation="Vertical" Background="Black">
+                    <TextBlock FontWeight="Bold" FontSize="50" Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,0">Snake</TextBlock>
+                    <TextBlock x:Name="ettentions" HorizontalAlignment="Center" TextWrapping="Wrap" Margin="10" Foreground="White" FontSize="16"></TextBlock>
+                    <TextBlock Margin="0" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="red"/>
+                    <Button Margin="10" Name="btnOket" Background="Black" Foreground="White" Click="BtnOKet_Click" HorizontalAlignment="Center" Padding="10,3">Ok!</Button>
+                    <Button Margin="0" Name="btnNo" Background="Black" Foreground="White" Click="BtnNOet_Click" HorizontalAlignment="Center" Padding="10,3">No!</Button>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Silver" BorderThickness="2" Width="300" Height="300" Name="bdrWelcomeMessage" Panel.ZIndex="1" Visibility="Collapsed">
+                <StackPanel Orientation="Vertical" Background="Black">
+                    <TextBlock FontWeight="Bold" FontSize="50" Foreground="White" HorizontalAlignment="Center" Margin="0,20,0,0">Snake</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Margin="20" Foreground="White" FontSize="16">New account successfully created</TextBlock>
+                    <TextBlock x:Name="UserName" Margin="10" Text="" FontWeight="Bold" HorizontalAlignment="Center" FontSize="24" Foreground="red"/>
+                    <Button Margin="30" Name="btnOk" Background="Black" Foreground="White" Click="BtnOK_Click" HorizontalAlignment="Center" Padding="10,3">Ok!</Button>
+                </StackPanel>
+            </Border>
+            <TextBox x:Name="repeatpassword" VerticalContentAlignment="Center" 
+                HorizontalAlignment="Center" Height="30"  VerticalAlignment="Center" Width="190" FontFamily="Wingdings 3">
+                <TextBox.Style>
+                    <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="repeate password...." FontFamily="Segoue UI" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="password" VerticalContentAlignment="Center" 
+                HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" Text="" FontFamily="Wingdings 3" VerticalAlignment="Center" Width="190" Margin="385,220,385,290">
+                <TextBox.Style>
+                    <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="password...." FontFamily="Segoue UI" Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="login" VerticalContentAlignment="Center" 
+                HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="190" Margin="385,185,385,325">
+                <TextBox.Style>
+                    <Style xmlns:sys="clr-namespace:System;assembly=mscorlib" TargetType="{x:Type TextBox}">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="login...." Foreground="LightGray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Button x:Name="setdata" Content="setdata" Margin="0,290,0,0" Background="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="30" Click="Setdata_Click" Cursor=""/>
+            <Button x:Name="back" Content="back" Margin="415,325,415,0" Background="Black" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="30" Click="Back_Click"/>
+            <Label x:Name="ettention" Content="" Foreground="White" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Margin="300,150,298,360" Width="362"/>
+            <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Left" Height="15" Margin="385,165,0,0" VerticalAlignment="Top" Width="190" IsIndeterminate="True" Visibility="Collapsed"/>
+        </Grid>
+    </DockPanel>
+
+</Window>
