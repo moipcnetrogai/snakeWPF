@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace wpfsnake{
     class Connection{
-        static string connect = "data source=mysnakedata.database.windows.net;initial catalog=snake;persist security info=True;user id=myhanyka;password=Mihanyka_11;MultipleActiveResultSets=True;App=EntityFramework";
+        static string connect = "Server=tcp:mysnakedata.database.windows.net,1433;Initial Catalog=snake;Persist Security Info=False;User ID=myhanyka;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public static SqlConnection MyConnection = new SqlConnection(@connect);
         public static int On(int x){
             try { MyConnection.Open(); }
